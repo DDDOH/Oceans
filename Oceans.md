@@ -1,22 +1,20 @@
 [TOC]
 
-# Oceans
+# Papers
 
-## Papers
+## Unsorted
 
-### Unsorted
-
-##### Mixture Density Networks
+### Mixture Density Networks
 
 <img src="/Users/shuffle_new/Library/Application Support/typora-user-images/image-20210223235049873.png" alt="image-20210223235049873" style="zoom:25%;" />
 
 用mixture gaussian来model conditional density. x是condition， $p(\mathbf{t} \mid \mathbf{x})=\sum_{i=1}^{m} \alpha_{i}(\mathbf{x}) \phi_{i}(\mathbf{t} \mid \mathbf{x})$, with $\phi_{i}(\mathbf{t} \mid \mathbf{x})=\frac{1}{(2 \pi)^{c / 2} \sigma_{i}(\mathbf{x})^{c}} \exp \left\{-\frac{\left\|\mathbf{t}-\boldsymbol{\mu}_{i}(\mathbf{x})\right\|^{2}}{2 \sigma_{i}(\mathbf{x})^{2}}\right\}$. NN的input是x，output是The parameters $\alpha_i(\mathbf{x}), \boldsymbol{\mu}_{i}(\mathbf{x}), \sigma_{i}(\mathbf{x})$. Training objective function is set to minimize the log likelihood function。
 
-##### The Kernel Mixture Network: A Nonparametric Method for Conditional Density Estimation of Continuous Random Variables
+### The Kernel Mixture Network: A Nonparametric Method for Conditional Density Estimation of Continuous Random Variables
 
 
 
-##### Conditional Density Estimation with Neural Networks: Best Practices and Benchmarks
+### Conditional Density Estimation with Neural Networks: Best Practices and Benchmarks
 
 文章里提出的，在MDN和KMN上的基础上，NN+Loglikelihood。提出了两个新的东西：
 
@@ -31,19 +29,19 @@
 
 parametric的方法问题主要在于不够灵活，要预先假设一个conditional distribution的family。non parametric的方法，除了不condition时候的KDE的问题（不够灵活、bandwidth要合适选取等等）之外，有可能$\hat{p}(\boldsymbol{x})$接近0的时候，$\hat{p}(\boldsymbol{y} \mid \boldsymbol{x})=\frac{\hat{p}(\boldsymbol{x}, \boldsymbol{y})}{\hat{p}(\boldsymbol{x})}$给出的conditional density也不够稳定。
 
-### Normalizing Flows
+## Normalizing Flows
 
-##### Variational inference with normalizing flows
+### Variational inference with normalizing flows
 
 论文里有好多 Variational Inference 的术语，还没完全看懂。
 
 TODO：VI的condition和我们的condition是不是一样的东西
 
-##### DENSITY ESTIMATION USING REAL NVP
+### DENSITY ESTIMATION USING REAL NVP
 
 没找到跟condition有关的东西，大概也是用normalizing flow，但是改了一点点network的东西。做的是图像生成和图像interpolation。
 
-##### LEARNING LIKELIHOODS WITH CONDITIONAL NORMALIZING FLOWS
+### LEARNING LIKELIHOODS WITH CONDITIONAL NORMALIZING FLOWS
 
 这个就是conditional normalizing flow。
 
@@ -53,7 +51,7 @@ TODO：VI的condition和我们的condition是不是一样的东西
 
 
 
-## Techniques
+# Techniques
 
 ##### Normalizing Flow
 
@@ -92,7 +90,7 @@ arrival data似乎很适合component by component？
 
 https://www.youtube.com/watch?v=uXY18nzdSsM 最前面讲了几分钟，肯定有完全讲auto-regressive model的lecture
 
-## Keywords
+# Keywords
 
 Conditional Normalizing Flow
 
