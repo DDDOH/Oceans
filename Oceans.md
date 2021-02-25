@@ -6,7 +6,7 @@
 
 ### Mixture Density Networks
 
-<img src="/Users/shuffle_new/Library/Application Support/typora-user-images/image-20210223235049873.png" alt="image-20210223235049873" style="zoom:25%;" />
+<img src="https://tva1.sinaimg.cn/large/008eGmZEly1go05lnui70j30l60t4mz6.jpg" alt="image-20210223235049873" style="zoom:25%;" />
 
 用mixture gaussian来model conditional density. x是condition， $p(\mathbf{t} \mid \mathbf{x})=\sum_{i=1}^{m} \alpha_{i}(\mathbf{x}) \phi_{i}(\mathbf{t} \mid \mathbf{x})$, with $\phi_{i}(\mathbf{t} \mid \mathbf{x})=\frac{1}{(2 \pi)^{c / 2} \sigma_{i}(\mathbf{x})^{c}} \exp \left\{-\frac{\left\|\mathbf{t}-\boldsymbol{\mu}_{i}(\mathbf{x})\right\|^{2}}{2 \sigma_{i}(\mathbf{x})^{2}}\right\}$. NN的input是x，output是The parameters $\alpha_i(\mathbf{x}), \boldsymbol{\mu}_{i}(\mathbf{x}), \sigma_{i}(\mathbf{x})$. Training objective function is set to minimize the log likelihood function。
 
@@ -25,7 +25,7 @@
 
 综述写的很好，比较全面。综述里提到传统统计的conditional density estimation可以分为parametric和non parametric的方法。很好理解：
 
-![image-20210225215521032](/Users/shuffle_new/Library/Application Support/typora-user-images/image-20210225215521032.png)
+![image-20210225215521032](https://tva1.sinaimg.cn/large/008eGmZEly1go05lovoz4j30ya0u0gxr.jpg)
 
 parametric的方法问题主要在于不够灵活，要预先假设一个conditional distribution的family。non parametric的方法，除了不condition时候的KDE的问题（不够灵活、bandwidth要合适选取等等）之外，有可能$\hat{p}(\boldsymbol{x})$接近0的时候，$\hat{p}(\boldsymbol{y} \mid \boldsymbol{x})=\frac{\hat{p}(\boldsymbol{x}, \boldsymbol{y})}{\hat{p}(\boldsymbol{x})}$给出的conditional density也不够稳定。
 
@@ -45,7 +45,7 @@ TODO：VI的condition和我们的condition是不是一样的东西
 
 这个就是conditional normalizing flow。
 
-![image-20210225214629880](/Users/shuffle_new/Library/Application Support/typora-user-images/image-20210225214629880.png)
+![image-20210225214629880](https://tva1.sinaimg.cn/large/008eGmZEly1go05lpghsfj31e80a042k.jpg)
 
 做的是image superresolution。提到了一个叫Split Prior的技术，把condition给拆开，降低condition的难度，似乎值得一看。
 
@@ -59,7 +59,7 @@ TODO：VI的condition和我们的condition是不是一样的东西
 
 借用LEARNING LIKELIHOODS WITH CONDITIONAL NORMALIZING FLOWS里的公式，NF做的是下面的事：
 
-![image-20210225215018198](/Users/shuffle_new/Library/Application Support/typora-user-images/image-20210225215018198.png)
+![image-20210225215018198](https://tva1.sinaimg.cn/large/008eGmZEly1go05l1gw7dj31gg0aw76y.jpg)
 
 NF似乎可以理解成，只用了gan里面的generator，并且对这个generator加了invertible的要求。gan的discriminator则由maximum log likelihood来完成。（似乎感觉，对Pierre model这个不太复杂的分布，用normalizing flow足够灵活且稳定。但condition distribution怎么learn还是个问题，顺着Conditional Normalizing Flow关键词可以接着找）
 
